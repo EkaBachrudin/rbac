@@ -1,0 +1,36 @@
+//Create User
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "badriana",
+    "email": "badiraina@gmail.com",
+    "password": "password",
+    "confirmPassword": "password",
+    "role": "user"
+}
+
+###
+//Get Users
+GET http://localhost:5000/users
+
+###
+//Get One User 
+GET http://localhost:5000/users/b3c265ea-2947-41f3-bdc7-7012e7e16607
+
+###
+//Update user
+PATCH  http://localhost:5000/users/b3c265ea-2947-41f3-bdc7-7012e7e16607
+Content-Type: application/json
+
+{
+    "name": "Abdul update lagi",
+    "email": "badiraina@gmail.com",
+    "password": "",
+    "confirmPassword": "",
+    "role": "user"
+}
+
+###
+//Update user
+DELETE   http://localhost:5000/users/b3c265ea-2947-41f3-bdc7-7012e7e16607
