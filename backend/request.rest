@@ -40,7 +40,7 @@ DELETE   http://localhost:5000/users/b3c265ea-2947-41f3-bdc7-7012e7e16607
 GET http://localhost:5000/me
 
 ###
-//Login user
+//Login
 POST  http://localhost:5000/login 
 Content-Type: application/json
 
@@ -52,3 +52,36 @@ Content-Type: application/json
 ###
 //Logout user
 DELETE  http://localhost:5000/logout 
+
+
+###
+//Get All PRoduct
+GET http://localhost:5000/products
+
+###
+//Create Product
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "name": "Product 6",
+    "price": 9972
+}
+
+###
+//Get One PRoduct
+GET http://localhost:5000/products/2f6df021-1324-4b3d-a1d2-7e778f92089d
+
+###
+//Update Product
+PATCH  http://localhost:5000/products/88243fc8-8a6e-443a-aa94-c55b0a99a806
+Content-Type: application/json
+
+{
+    "name": "Product updated",
+    "price": 9971
+}
+
+###
+//Delete One PRoduct
+DELETE  http://localhost:5000/products/88243fc8-8a6e-443a-aa94-c55b0a99a806

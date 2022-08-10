@@ -6,12 +6,13 @@ import {
     upateProduct,
     deleteProduct
 } from "../controllers/ProductController.js"
+import {varifyUser} from "../middleware/AuthUser.js";
 const router = express.Router();
 
-router.get('/product', getProduct);
-router.get('/product/{id}', getProductById);
-router.post('/product', createProduct);
-router.patch('/product/{id}', upateProduct);
-router.delete('/product/{id}', deleteProduct);
+router.get('/products', varifyUser,  getProduct);
+router.get('/products/:id', varifyUser,  getProductById);
+router.post('/products', varifyUser,  createProduct);
+router.patch('/products/:id', varifyUser,  upateProduct);
+router.delete('/products/:id', varifyUser,  deleteProduct);
 
 export default router
