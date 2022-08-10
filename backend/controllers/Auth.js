@@ -1,5 +1,5 @@
-import User from "./UserController.js";
-import { argon2 } from "argon2";
+import User from "../models/UserModel.js";
+import argon2  from "argon2";
 
 export const Login = async(req, res) => {
     const user = await User.findOne({
@@ -7,9 +7,9 @@ export const Login = async(req, res) => {
             email: req.body.email
         }
     });
-    if(!user) return response.status(404).json({msg: "User tidak ditemukan!"});
+    if(!user) return res.status(404).json({msg: "User tidak ditemukan!"});
     const match = await argon2.verify(user.password, req.body.password);
-    if(!match) return response.status(400).json({msg: "Wrong password"});
+    if(!match) return res.status(400).json({msg: "Wrong password"});
     req.session.userId = user.uuid;
     const uuid = user.uuid;
     const name = user.name;
@@ -29,7 +29,7 @@ export const Me = async(req, res) => {
         }
     });
     if(!user) return response.status(404).json({msg: "User tidak ditemukan!"});
-    res.status(200).json(user)
+    res.status(200).json(user);
 }
 
 export const Logout = async(req, res) => {

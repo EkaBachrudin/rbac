@@ -81,7 +81,7 @@ export const deleteUser = async(req, res) => {
             uuid: req.params.id
         }
     });
-    if(!user) return response.status(404).json({msg: "User tidak ditemukan!"});
+    if(!user) return res.status(404).json({msg: "User tidak ditemukan!"});
     try {
         await User.destroy({
             where: {

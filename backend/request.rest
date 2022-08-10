@@ -3,8 +3,8 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "badriana",
-    "email": "badiraina@gmail.com",
+    "name": "user",
+    "email": "user@gmail.com",
     "password": "password",
     "confirmPassword": "password",
     "role": "user"
@@ -34,3 +34,21 @@ Content-Type: application/json
 ###
 //Update user
 DELETE   http://localhost:5000/users/b3c265ea-2947-41f3-bdc7-7012e7e16607
+
+###
+//Check login
+GET http://localhost:5000/me
+
+###
+//Login user
+POST  http://localhost:5000/login 
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "password"
+}
+
+###
+//Logout user
+DELETE  http://localhost:5000/logout 
