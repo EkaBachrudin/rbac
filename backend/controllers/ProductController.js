@@ -27,7 +27,7 @@ export const getProduct = async(req, res) => {
         }
         res.status(200).json(response)
     } catch (error) {
-        res.status(500).json({msg: error.msg})
+        res.status(500).json({msg: error.message})
     }
 }
 
@@ -65,7 +65,7 @@ export const getProductById = async(req, res) => {
         }
         res.status(200).json(response)
     } catch (error) {
-        res.status(500).json({msg: error.msg})
+        res.status(500).json({msg: error.message})
     }
 }
 
@@ -79,7 +79,7 @@ export const createProduct = async(req, res) => {
         })
         res.status(201).json({msg: "Product Created Successfuly"})
     } catch (error) {
-        res.status(500).json({msg: error.msg})
+        res.status(500).json({msg: error.message})
     }
 }
 
