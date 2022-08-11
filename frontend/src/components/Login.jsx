@@ -1,29 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import {LoginUser, reset } from '../features/authSlice';
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user, isError, isSuccess, isLoading, message} = useSelector(
+  const { user, isError, isSuccess, isLoading, message } = useSelector(
     (state) => state.auth
   );
 
-  useEffect(()=>{
-      if(user || isSuccess){
-        navigate("/dashboard");
-      }
-
-      dispatch(reset());
+  useEffect(() => {
+    if (user || isSuccess) {
+      navigate("/dashboard");
+    }
+    dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
 
-  const Auth = (e) =>{
+  const Auth = (e) => {
     e.preventDefault();
-    dispatch(LoginUser({email, password}));
-  }
+    dispatch(LoginUser({ email, password }));
+  };
 
   return (
     <section className="hero has-background-grey-light is-fullheight is-fullwidth">
@@ -48,15 +47,17 @@ const Login = () => {
                     <div className="field">
                         <label className="label">Password</label>
                         <div className="control">
-                            <input className="input"
+                            <input  type="password"
+                             className="input"
                              value={password}
-                             onChange={(e)=>setpassword(e.target.value)}
+                             onChange={(e)=>setPassword(e.target.value)}
                              placeholder='****'
                               />
                         </div>
                     </div>
                     <div className="field mt-5">
                         <button type="submit" className="button is-success is-fullwidth">{isLoading ? 'Loading...' : 'login'}</button>
+                        <NavLink to={"/dashboard"}>Dashboard</NavLink>
                     </div>
                 </form>
             </div>
@@ -67,4 +68,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

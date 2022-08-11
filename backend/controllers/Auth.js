@@ -18,17 +18,17 @@ export const Login = async(req, res) => {
     res.status(200).json(uuid,name, email,role);     
 }
 
-export const Me = async(req, res) => {
+export const Me = async (req, res) =>{
     if(!req.session.userId){
-        return res.status(401).json({msg: "Mohon login ke akun anda"});
+        return res.status(401).json({msg: "Mohon login ke akun Anda!"});
     }
     const user = await User.findOne({
-        attributes:  ['uuid','name', 'email','role'],
+        attributes:['uuid','name','email','role'],
         where: {
             uuid: req.session.userId
         }
     });
-    if(!user) return response.status(404).json({msg: "User tidak ditemukan!"});
+    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
     res.status(200).json(user);
 }
 
